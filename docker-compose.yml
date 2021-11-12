@@ -14,8 +14,8 @@ services:
     hostname: clickhouse-01
     container_name: clickhouse-01
     ports:
-      - 127.0.0.1:8123:8123
-      - 127.0.0.1:9001:9000
+      - 0.0.0.0:8123:8123
+      - 0.0.0.0:9001:9000
     volumes:
       - ./config/clickhouse_config.xml:/etc/clickhouse-server/config.xml
       - ./config/clickhouse_metrika.xml:/etc/clickhouse-server/metrika.xml
