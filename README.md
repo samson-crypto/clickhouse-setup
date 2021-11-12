@@ -7,14 +7,14 @@
 - Run server
 
 ```
-docker run -d --name clickhouse-server -p 9000:9000 --ulimit nofile=262144:262144 yandex/clickhouse-server
+docker run -d --name clickhouse-server -p 9000:9000 --ulimit nofile=262144:262144 clickhouse/clickhouse-server
 
 ```
 
 - Run client
 
 ```
-docker run -it --rm --link clickhouse-server:clickhouse-server yandex/clickhouse-client  --host clickhouse-server
+docker run -it --rm --link clickhouse-server:clickhouse-server clickhouse/clickhouse-client  --host clickhouse-server
 ```
 
 Now you can see if it success setup or not.
@@ -47,7 +47,7 @@ services:
         hostname: clickhouse-zookeeper
 
     clickhouse-01:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-01
         container_name: clickhouse-01
         ports:
@@ -65,7 +65,7 @@ services:
             - "clickhouse-zookeeper"
 
     clickhouse-02:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-02
         container_name: clickhouse-02
         ports:
@@ -83,7 +83,7 @@ services:
             - "clickhouse-zookeeper"
 
     clickhouse-03:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-03
         container_name: clickhouse-03
         ports:
@@ -101,7 +101,7 @@ services:
             - "clickhouse-zookeeper"
 
     clickhouse-04:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-04
         container_name: clickhouse-04
         ports:
@@ -119,7 +119,7 @@ services:
             - "clickhouse-zookeeper"
 
     clickhouse-05:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-05
         container_name: clickhouse-05
         ports:
@@ -137,7 +137,7 @@ services:
             - "clickhouse-zookeeper"
 
     clickhouse-06:
-        image: yandex/clickhouse-server
+        image: clickhouse/clickhouse-server
         hostname: clickhouse-06
         container_name: clickhouse-06
         ports:
@@ -270,7 +270,7 @@ docker-compose up -d
 Conn to server and see if the cluster settings fine;
 
 ```
-docker run -it --rm --network="clickhouse-net" --link clickhouse-01:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+docker run -it --rm --network="clickhouse-net" --link clickhouse-01:clickhouse-server clickhouse/clickhouse-client --host clickhouse-server
 ```
 
 ```sql
@@ -339,7 +339,7 @@ Please see config/users.xml
 
 - Conn
 ```bash
-docker run -it --rm --network="clickhouse-net" --link clickhouse-01:clickhouse-server yandex/clickhouse-client --host clickhouse-server -u user1 --password 123456
+docker run -it --rm --network="clickhouse-net" --link clickhouse-01:clickhouse-server clickhouse/clickhouse-client --host clickhouse-server -u user1 --password 123456
 ```
 
 ## Source
